@@ -52,9 +52,8 @@ class ValidationChecks extends AbstractFormatChecker
         $max = $args['max_strlen'];
         $value = $this->params[$name];
         if (strlen($value) > $max) {
-            $this->params[$name] = mb_strimwidth($value, 0, $max, null, 'UTF-8');
+             throw new Exception('Param ' . $name . ' must not be longer than ' . $max .' characters.', 100);
         }
-        $this->params[$name] = $value;
     }
 }
 ```
